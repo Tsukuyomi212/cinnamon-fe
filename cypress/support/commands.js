@@ -1,25 +1,24 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('seedAndVisit', (seedData = 'fixture:users') => {
+  cy.server();
+  cy.route('GET', '/api/users', seedData);
+  cy.visit('/');
+});
+
+Cypress.Commands.add('goToLoginPage', () => {
+  cy.server();
+  cy.visit('/login');
+});
+
+Cypress.Commands.add('login', () => {
+  cy.request({
+    method: 'POST',
+    url: `${Cypress.env('backendAPI')}/api/auth/login`,
+    body: {
+      email: 'hope@mail.com',
+      password: 'supersecret123',
+    },
+  }).then(resp => {
+    expect(resp.body).to.have.property('token');
+    cy.setLocalStorage('token', `${resp.body.token}`);
+  });
+});

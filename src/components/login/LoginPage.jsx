@@ -9,12 +9,9 @@ export const LoginPage: React.FC = () => {
   const { authenticateUser } = useContext(AuthContext);
 
   const submitForm = async values => {
-    try {
-      const result = await login(values);
-      authenticateUser({ user: result.user, token: result.token });
-    } catch (error) {
-      console.log('🚀 ~ file: LoginPage.tsx ~ line 13 ~ submitForm ~ error', error);
-    }
+    const result = await login(values);
+    console.log('🚀 ~ file: LoginPage.jsx ~ line 14 ~ result', result);
+    authenticateUser({ user: result.user, token: result.token });
   };
 
   return (

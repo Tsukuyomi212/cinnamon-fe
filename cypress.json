@@ -1,4 +1,8 @@
 {
   "baseUrl": "http://localhost:3000",
-  "video": false
+  "video": false,
+  "env": {
+    "backendAPI": "http://127.0.0.1:8000"
+  },
+  "failOnStatusCode": false
 }

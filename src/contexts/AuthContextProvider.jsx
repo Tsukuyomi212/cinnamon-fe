@@ -12,7 +12,7 @@ export const AuthContextProvider = ({ children }) => {
   const authenticateUser = async payload => {
     try {
       await localStorage.setItem('token', payload.token);
-      await setAuthenticatedUser(payload.user);
+      setAuthenticatedUser(payload.user);
       history.push(HOMEPAGE);
     } catch (error) {
       console.log(error);
