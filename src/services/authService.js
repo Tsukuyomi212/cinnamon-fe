@@ -2,7 +2,7 @@ import { LOGIN_API, SIGNUP_API } from '../utils/apiRoutes';
 import { findNumberInString } from '../utils/findNumberInString';
 import { api } from './baseAPI';
 
-export const login = payload => {
+export const loginUser = payload => {
   return api
     .post(LOGIN_API, payload)
     .then(result => {
@@ -27,7 +27,7 @@ export const me = () => {
   });
 };
 
-export const signup = payload => {
+export const signupUser = payload => {
   return api.post(SIGNUP_API, payload).then(result => {
     return {
       user: result.data.user,

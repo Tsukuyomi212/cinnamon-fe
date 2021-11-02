@@ -12,8 +12,7 @@ export const Homepage = () => {
 
   const fetchUsers = async () => {
     const users = await getUsers();
-    const filtered = users.filter(user => user._id !== authenticatedUser.user._id);
-    setUsers(filtered);
+    setUsers(users);
   };
 
   useEffect(() => {
@@ -26,14 +25,13 @@ export const Homepage = () => {
   return (
     <div>
       <h1>Welcome to Cinnamon!</h1>
-      {authenticatedUser && (
+      {authenticatedUser && users && (
         <div id="users-list">
           <h2>Here is a list of users:</h2>
           <ul>
-            {users &&
-              users.map((user, index) => (
-                <li key={index}>{`username: ${user.username}, email: ${user.email}`}</li>
-              ))}
+            {users.map((user, index) => (
+              <li key={index}>{`username: ${user.username}, email: ${user.email}`}</li>
+            ))}
           </ul>
         </div>
       )}

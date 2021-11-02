@@ -1,34 +1,51 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useMemo } from 'react';
 import { useHistory } from 'react-router';
 import { me } from '../services/authService';
 import { HOMEPAGE, LOGIN } from '../utils/routes';
+import { loginUser, signupUser } from '../services/authService.js';
 
 export const AuthContext = createContext(undefined);
 
 export const AuthContextProvider = ({ children }) => {
   const [authenticatedUser, setAuthenticatedUser] = useState(null);
+  const [token, setToken] = useState(null);
   const history = useHistory();
 
-  const authenticateUser = async payload => {
+  const signup = async payload => {
     try {
-      await localStorage.setItem('token', payload.token);
-      setAuthenticatedUser(payload.user);
+      const result = await signupUser(payload);
+      await authenticateUser({ user: result.user, token: result.token });
       history.push(HOMEPAGE);
     } catch (error) {
       console.log(error);
     }
   };
 
+  const login = async payload => {
+    try {
+      const result = await loginUser(payload);
+      await authenticateUser({ user: result.user, token: result.token });
+      history.push(HOMEPAGE);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const authenticateUser = ({ user, token }) => {
+    localStorage.setItem('token', token);
+    setToken(token);
+    setAuthenticatedUser(result.user);
+  };
+
   const fetchAuthenticatedUser = async () => {
     const token = localStorage.getItem('token');
     if (token) {
-      const user = await me();
-      setAuthenticatedUser(user);
-      return true;
-    } else {
-      setAuthenticatedUser(null);
-      history.push(LOGIN);
-      return false;
+      try {
+        const user = await me();
+        setAuthenticatedUser(user);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -40,18 +57,15 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     fetchAuthenticatedUser();
-  }, []);
+  }, [token]);
 
-  return (
-    <AuthContext.Provider
-      value={{
-        authenticatedUser,
-        authenticateUser,
-        logout,
-        fetchAuthenticatedUser,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+  const memoedAuthValue = useMemo(() => ({
+    authenticatedUser,
+    login,
+    logout,
+    signup,
+    fetchAuthenticatedUser,
+  }));
+
+  return <AuthContext.Provider value={memoedAuthValue}>{children}</AuthContext.Provider>;
 };

@@ -6,15 +6,10 @@ import { LOGIN } from '../../utils/routes';
 import { SignupForm } from './SignupForm';
 
 export const SignupPage = () => {
-  const { authenticateUser } = useContext(AuthContext);
+  const { signup } = useContext(AuthContext);
 
   const submitForm = async values => {
-    try {
-      const result = await signup(values);
-      authenticateUser({ user: result.user, token: result.token });
-    } catch (error) {
-      console.log('🚀 ~ file: SignupPage.tsx ~ line 17 ~ submitForm ~ error', error);
-    }
+    await signup(values);
   };
 
   return (

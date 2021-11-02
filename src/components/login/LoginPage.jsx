@@ -2,17 +2,15 @@ import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContextProvider';
-import { login } from '../../services/authService';
 import { SIGNUP, HOMEPAGE } from '../../utils/routes';
 import { LoginForm } from './LoginForm';
 
 export const LoginPage: React.FC = () => {
-  const { authenticateUser, authenticatedUser } = useContext(AuthContext);
+  const { authenticatedUser, login } = useContext(AuthContext);
   const history = useHistory();
 
   const submitForm = async values => {
-    const result = await login(values);
-    await authenticateUser({ user: result.user, token: result.token });
+    await login(values);
   };
 
   useEffect(() => {
