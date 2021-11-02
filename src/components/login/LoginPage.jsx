@@ -1,18 +1,25 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContextProvider';
 import { login } from '../../services/authService';
-import { SIGNUP } from '../../utils/routes';
+import { SIGNUP, HOMEPAGE } from '../../utils/routes';
 import { LoginForm } from './LoginForm';
 
 export const LoginPage: React.FC = () => {
-  const { authenticateUser } = useContext(AuthContext);
+  const { authenticateUser, authenticatedUser } = useContext(AuthContext);
+  const history = useHistory();
 
   const submitForm = async values => {
     const result = await login(values);
-    console.log('🚀 ~ file: LoginPage.jsx ~ line 14 ~ result', result);
-    authenticateUser({ user: result.user, token: result.token });
+    await authenticateUser({ user: result.user, token: result.token });
   };
+
+  useEffect(() => {
+    if (authenticatedUser) {
+      history.push(HOMEPAGE);
+    }
+  }, [authenticatedUser]);
 
   return (
     <div>
