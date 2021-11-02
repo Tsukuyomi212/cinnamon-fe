@@ -15,6 +15,10 @@
   color: #434b56;
 }
 
+.app-title:hover {
+  color: #95847b;
+}
+
 .nav-btn-container {
   position: absolute;
   right: 0;
