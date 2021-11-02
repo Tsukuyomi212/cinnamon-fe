@@ -14,3 +14,40 @@
   font-weight: bold;
   color: #434b56;
 }
+
+.nav-btn-container {
+  position: absolute;
+  right: 0;
+}
+
+.nav-btn {
+  padding: 1em 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  margin: 0.1em 0.1em;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.nav-btn-full {
+  background-color: #dabe92;
+  color: #434b56;
+  border: 1px solid #dabe92;
+}
+.nav-btn-full:hover {
+  background-color: #434b56;
+  border: 1px solid #434b56;
+  color: #dabe92;
+}
+
+.nav-btn-outlined {
+  background-color: white;
+  color: #434b56;
+  border: 1px solid #b08c7e;
+}
+
+.nav-btn-outlined:hover {
+  background-color: #b08c7e;
+}

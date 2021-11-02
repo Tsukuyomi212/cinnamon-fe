@@ -12,14 +12,18 @@ export const Navbar = () => {
       <nav className="nav-container">
         <AppTitle />
         {authenticatedUser ? (
-          <button onClick={logout}>LOGOUT</button>
+          <div className="nav-btn-container">
+            <button onClick={logout} className="nav-btn nav-btn-full">
+              LOGOUT
+            </button>
+          </div>
         ) : (
-          <div>
+          <div className="nav-btn-container">
             <Link to={LOGIN}>
-              <button>LOGIN</button>
+              <button className="nav-btn nav-btn-outlined">LOGIN</button>
             </Link>
             <Link to={SIGNUP}>
-              <button>SIGNUP</button>
+              <button className="nav-btn nav-btn-full">SIGNUP</button>
             </Link>
           </div>
         )}
