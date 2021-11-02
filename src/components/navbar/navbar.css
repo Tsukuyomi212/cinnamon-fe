@@ -1,0 +1,16 @@
+.nav-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.logo {
+  max-width: 2.5em;
+  max-height: 2.5em;
+}
+
+.app-title {
+  font-family: 'Parisienne', cursive;
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #434b56;
+}
