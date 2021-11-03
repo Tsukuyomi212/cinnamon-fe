@@ -21,12 +21,13 @@ export const LoginPage: React.FC = () => {
 
   return (
     <div>
-      <h1>Login page</h1>
       <LoginForm handleSubmit={submitForm} />
-      <div>
+      <div className="register-msg">
         <div>{"Don't have an account?"}</div>
         <div>
-          <Link to={SIGNUP}>Create one</Link>
+          <Link to={SIGNUP}>
+            <span className="link-register ">Create one</span>
+          </Link>
         </div>
       </div>
     </div>

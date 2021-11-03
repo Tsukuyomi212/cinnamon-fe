@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import './login.css';
 
 export const LoginForm = ({ handleSubmit }) => {
   const initialValues = { email: '', password: '' };
@@ -12,12 +13,12 @@ export const LoginForm = ({ handleSubmit }) => {
   });
 
   return (
-    <div>
+    <div className="login-form-container">
       <Formik initialValues={initialValues} validationSchema={LoginSchema} onSubmit={handleSubmit}>
-        {({ values, handleChange }) => (
+        {({ values, handleChange, errors, touched }) => (
           <Form>
-            <div>
-              <label>Email: </label>
+            <div className="login-input-container">
+              <label className="form-label">Email:</label>
               <Field
                 label="email"
                 name="email"
@@ -25,21 +26,31 @@ export const LoginForm = ({ handleSubmit }) => {
                 onChange={handleChange}
                 required
                 autoFocus
+                className="login-field"
               />
+              {errors.email && touched.email ? (
+                <div className="input-error">{errors.email}</div>
+              ) : null}
             </div>
-            <div>
-              <label>Password: </label>
+            <div className="login-input-container">
+              <label className="form-label">Password:</label>
               <Field
                 label="password"
                 name="password"
                 value={values.password}
                 onChange={handleChange}
                 required
+                className="login-field"
               />
+              {errors.password && touched.password ? (
+                <div className="input-error">{errors.password}</div>
+              ) : null}
             </div>
-            <button type="submit" data-testid="login-submit-button">
-              Login
-            </button>
+            <div className="center-element">
+              <button type="submit" className="login-submit-btn">
+                Login
+              </button>
+            </div>
           </Form>
         )}
       </Formik>
