@@ -1,11 +1,19 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 
 export const LoginForm = ({ handleSubmit }) => {
   const initialValues = { email: '', password: '' };
 
+  const LoginSchema = Yup.object().shape({
+    email: Yup.string().trim().email('Invalid email').required('Email field can not be empty'),
+    password: Yup.string().trim().required('Password field can not be empty'),
+  });
+
   return (
     <div>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik initialValues={initialValues} validationSchema={LoginSchema} onSubmit={handleSubmit}>
         {({ values, handleChange }) => (
           <Form>
             <div>
@@ -37,4 +45,8 @@ export const LoginForm = ({ handleSubmit }) => {
       </Formik>
     </div>
   );
+};
+
+LoginForm.propTypes = {
+  handleSubmit: PropTypes.func,
 };

@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Formik, Form, Field } from 'formik';
 
 export const SignupForm = ({ handleSubmit }) => {
@@ -61,4 +63,8 @@ export const SignupForm = ({ handleSubmit }) => {
       </Formik>
     </div>
   );
+};
+
+SignupForm.propTypes = {
+  handleSubmit: PropTypes.func,
 };

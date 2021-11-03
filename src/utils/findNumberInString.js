@@ -1,3 +1,1 @@
-// @flow
-
-export const findNumberInString = (str: string) => str.match(/\d/g).join('');
+export const findNumberInString = str => str.match(/\d/g).join('');

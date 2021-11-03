@@ -24,7 +24,7 @@ export const LoginPage: React.FC = () => {
       <h1>Login page</h1>
       <LoginForm handleSubmit={submitForm} />
       <div>
-        <div>Don't have an account?</div>
+        <div>{"Don't have an account?"}</div>
         <div>
           <Link to={SIGNUP}>Create one</Link>
         </div>

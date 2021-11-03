@@ -1,7 +1,8 @@
+import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContextProvider';
-import { HOMEPAGE, LOGIN, SIGNUP } from '../../utils/routes';
+import { LOGIN, SIGNUP } from '../../utils/routes';
 import { AppTitle } from './AppTitle';
 
 export const Navbar = () => {

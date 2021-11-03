@@ -1,7 +1,7 @@
+import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContextProvider';
-import { signup } from '../../services/authService';
 import { LOGIN } from '../../utils/routes';
 import { SignupForm } from './SignupForm';
 

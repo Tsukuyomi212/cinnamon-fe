@@ -1,5 +1,7 @@
+import React from 'react';
 import { createContext, useState, useEffect, useMemo } from 'react';
 import { useHistory } from 'react-router';
+import PropTypes from 'prop-types';
 import { me } from '../services/authService';
 import { HOMEPAGE, LOGIN } from '../utils/routes';
 import { loginUser, signupUser } from '../services/authService.js';
@@ -34,7 +36,7 @@ export const AuthContextProvider = ({ children }) => {
   const authenticateUser = ({ user, token }) => {
     localStorage.setItem('token', token);
     setToken(token);
-    setAuthenticatedUser(result.user);
+    setAuthenticatedUser(user);
   };
 
   const fetchAuthenticatedUser = async () => {
@@ -59,13 +61,20 @@ export const AuthContextProvider = ({ children }) => {
     fetchAuthenticatedUser();
   }, [token]);
 
-  const memoedAuthValue = useMemo(() => ({
-    authenticatedUser,
-    login,
-    logout,
-    signup,
-    fetchAuthenticatedUser,
-  }));
+  const memoedAuthValue = useMemo(
+    () => ({
+      authenticatedUser,
+      login,
+      logout,
+      signup,
+      fetchAuthenticatedUser,
+    }),
+    [authenticatedUser],
+  );
 
   return <AuthContext.Provider value={memoedAuthValue}>{children}</AuthContext.Provider>;
+};
+
+AuthContextProvider.propTypes = {
+  children: PropTypes.element.isRequired,
 };

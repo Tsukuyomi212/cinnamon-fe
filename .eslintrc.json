@@ -1,12 +1,5 @@
 {
-  "overrides": [
-    {
-      "files": ["**/*.test.js", "**/*.spec.js"],
-      "rules": {
-        "no-undef": 0
-      }
-    }
-  ],
+  "extends": ["react-app", "react-app/jest", "eslint:recommended", "plugin:react/recommended"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
