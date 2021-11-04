@@ -24,7 +24,6 @@ export const LoginForm = ({ handleSubmit }) => {
                 name="email"
                 value={values.email}
                 onChange={handleChange}
-                required
                 autoFocus
                 className="login-field"
               />
@@ -39,7 +38,6 @@ export const LoginForm = ({ handleSubmit }) => {
                 name="password"
                 value={values.password}
                 onChange={handleChange}
-                required
                 className="login-field"
               />
               {errors.password && touched.password ? (
