@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContextProvider';
 import { LOGIN } from '../../utils/routes';
 import { SignupForm } from './SignupForm';
+import './signup.css';
 
 export const SignupPage = () => {
   const { signup } = useContext(AuthContext);
@@ -14,12 +15,13 @@ export const SignupPage = () => {
 
   return (
     <div>
-      <h1>Signup page</h1>
       <SignupForm handleSubmit={submitForm} />
-      <div>
+      <div className="login-msg">
         <div>Already have an account?</div>
         <div>
-          <Link to={LOGIN}>Login</Link>
+          <Link to={LOGIN}>
+            <span className="link-login">Login</span>
+          </Link>
         </div>
       </div>
     </div>

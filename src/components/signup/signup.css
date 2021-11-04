@@ -1,14 +1,14 @@
-.login-form-container {
-  margin: 10% 30% 2%;
-  padding: 3rem;
+.register-form-container {
+  margin: 2% 25% 2%;
+  padding: 1.5rem;
   border: 1px solid #dabe92;
   background-color: #dabe92;
 }
-.login-input-container {
+.register-input-container {
   margin: 1em 0;
 }
 
-.login-field {
+.register-field {
   margin: 0.4em;
   width: 100%;
   display: inline-block;
@@ -18,11 +18,11 @@
   padding: 0.7em;
 }
 
-.login-field:hover {
+.register-field:hover {
   border: 2px solid #b08c7e;
 }
 
-.login-field:focus {
+.register-field:focus {
   outline: none !important;
 }
 
@@ -36,7 +36,7 @@
   font-size: 1.3em;
 }
 
-.login-submit-btn {
+.register-submit-btn {
   padding: 1em 2em;
   text-align: center;
   text-decoration: none;
@@ -50,7 +50,7 @@
   border: 1px solid #b08c7e;
 }
 
-.login-submit-btn:hover {
+.register-submit-btn:hover {
   background-color: #b08c7e;
 }
 
@@ -58,18 +58,18 @@
   text-align: center;
 }
 
-.register-msg {
+.login-msg {
   text-align: center;
   color: #434b56;
   font-size: 1.3em;
 }
 
-.link-register {
+.link-login {
   font-family: 'Parisienne', cursive;
   font-size: 1.3em;
   font-weight: bold;
   color: #434b56;
 }
-.link-register:hover {
+.link-login:hover {
   color: #95847b;
 }
