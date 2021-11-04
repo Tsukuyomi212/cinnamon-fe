@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router';
@@ -22,6 +23,7 @@ export const Homepage = () => {
       history.push(LOGIN);
     }
   }, [authenticatedUser]);
+
   return (
     <div>
       <h1>Welcome to Cinnamon!</h1>

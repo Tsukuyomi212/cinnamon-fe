@@ -17,7 +17,7 @@ export const LoginPage: React.FC = () => {
     if (authenticatedUser) {
       history.push(HOMEPAGE);
     }
-  }, [authenticatedUser]);
+  }, [authenticatedUser, history]);
 
   return (
     <div>

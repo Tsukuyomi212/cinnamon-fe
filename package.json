@@ -45,6 +45,7 @@
   },
   "eslintIgnore": [
     "**/*.test.js",
-    "**/*.spec.js"
+    "**/*.spec.js",
+    "cypress/*"
   ]
 }
