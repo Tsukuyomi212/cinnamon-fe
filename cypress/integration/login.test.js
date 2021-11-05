@@ -42,7 +42,7 @@ describe('Login', () => {
     cy.get('input[name=email]').should('be.visible');
   });
 
-  it.only('should throw an error if given email is not a valid email', () => {
+  it('should throw an error if given email is not a valid email', () => {
     cy.get('input[name=email]').type('invalid.com');
     cy.get('input[name=password]').type('supersecret123');
 

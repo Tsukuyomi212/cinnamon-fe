@@ -38,7 +38,6 @@ export const SignupForm = ({ handleSubmit }) => {
                 name="username"
                 value={values.username}
                 onChange={handleChange}
-                required
                 autoFocus
                 className="register-field"
               />
@@ -53,7 +52,6 @@ export const SignupForm = ({ handleSubmit }) => {
                 name="email"
                 value={values.email}
                 onChange={handleChange}
-                required
                 className="register-field"
               />
               {errors.email && touched.email ? (
@@ -67,7 +65,6 @@ export const SignupForm = ({ handleSubmit }) => {
                 name="password"
                 value={values.password}
                 onChange={handleChange}
-                required
                 className="register-field"
               />
               {errors.password && touched.password ? (
@@ -81,7 +78,6 @@ export const SignupForm = ({ handleSubmit }) => {
                 name="passwordConfirmation"
                 value={values.passwordConfirmation}
                 onChange={handleChange}
-                required
                 className="register-field"
               />
               {errors.passwordConfirmation && touched.passwordConfirmation ? (
