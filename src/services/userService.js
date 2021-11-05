@@ -6,3 +6,9 @@ export const getUsers = () => {
     return result.data.users;
   });
 };
+
+export const deleteUser = ({ userId }) => {
+  return api.delete(`${USERS_API}/${userId}`).then(result => {
+    return result.status;
+  });
+};
